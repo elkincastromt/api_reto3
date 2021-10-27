@@ -1,5 +1,6 @@
 package co.usa.ciclo3.ciclo3.repository;
 
+import co.usa.ciclo3.ciclo3.model.Client;
 import co.usa.ciclo3.ciclo3.model.Doctor;
 import co.usa.ciclo3.ciclo3.repository.crud.DoctorCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,9 @@ public class DoctorRepository {
 
     public Doctor save(Doctor d){
         return doctorCrudRepository.save(d);
+    }
+
+    public void deleteDoctor(Doctor d) {
+        doctorCrudRepository.delete(d);
     }
 }

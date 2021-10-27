@@ -35,4 +35,29 @@ public class SpecialtyService {
         }
     }
 
+    public Specialty update(Specialty s) {
+        if (s.getId() != null) {
+            Optional<Specialty> paux = specialtyRepository.getSpecialty(s.getId());
+            if (!paux.isEmpty()) {
+                if (s.getName() != null) {
+                    paux.get().setName(s.getName());
+                }
+                if (s.getDescription() != null) {
+                    paux.get().setDescription(s.getDescription());
+                }
+                return specialtyRepository.save(paux.get());
+            }
+        }
+        return s;
+    }
+
+    public boolean deleteSpecialty(int id) {
+        Optional<Specialty> paux=getSpecialty(id);
+        if(!paux.isEmpty()){
+            specialtyRepository.deleteSpecialty(paux.get());
+            return true;
+        }
+        return false;
+    }
+
 }

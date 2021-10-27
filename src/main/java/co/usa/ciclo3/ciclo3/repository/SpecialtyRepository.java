@@ -25,4 +25,8 @@ public class SpecialtyRepository {
     public Specialty save(Specialty s){
         return specialtyCrudRepository.save(s);
     }
+
+    public void deleteSpecialty(Specialty s) {
+        specialtyCrudRepository.delete(s);
+    }
 }

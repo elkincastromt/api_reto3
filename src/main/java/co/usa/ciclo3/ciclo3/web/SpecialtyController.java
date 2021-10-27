@@ -34,6 +34,19 @@ public class SpecialtyController {
         return specialtyService.save(s);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Specialty update(@RequestBody Specialty s){
+        return specialtyService.update(s);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteSpecialty(@PathVariable("id") int id){
+        return specialtyService.deleteSpecialty(id);
+    }
+
+
 }
 
 

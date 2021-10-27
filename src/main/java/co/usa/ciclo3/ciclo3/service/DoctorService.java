@@ -35,6 +35,37 @@ public class DoctorService {
         }
     }
 
+    public Doctor update(Doctor d) {
+        if (d.getId() != null) {
+            Optional<Doctor> paux = doctorRepository.getDoctor(d.getId());
+            if (!paux.isEmpty()) {
+                if (d.getName() != null) {
+                    paux.get().setName(d.getName());
+                }
+                if (d.getDescription() != null) {
+                    paux.get().setDescription(d.getDescription());
+                }
+                if (d.getDepartment() != null) {
+                    paux.get().setDepartment(d.getDepartment());
+                }
+                if (d.getYear() != null) {
+                    paux.get().setYear(d.getYear());
+                }
+                return doctorRepository.save(paux.get());
+            }
+        }
+        return d;
+    }
+
+    public boolean deleteDoctor(int id) {
+        Optional<Doctor> paux=getDoctor(id);
+        if(!paux.isEmpty()){
+            doctorRepository.deleteDoctor(paux.get());
+            return true;
+        }
+        return false;
+    }
+
 }
 
 

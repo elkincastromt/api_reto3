@@ -51,6 +51,9 @@ public class DoctorService {
                 if (d.getYear() != null) {
                     paux.get().setYear(d.getYear());
                 }
+                if (d.getSpecialty() != null) {
+                    paux.get().setSpecialty(d.getSpecialty());
+                }
                 return doctorRepository.save(paux.get());
             }
         }
